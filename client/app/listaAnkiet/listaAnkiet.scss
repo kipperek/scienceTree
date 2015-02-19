@@ -1,0 +1,29 @@
+
+$box-color: #009688;
+
+.lista-wrapper{
+  padding:20px;
+
+  .lista-ankieta{
+    width: 200px;
+    background: white;
+    border-bottom: 1px solid $box-color;
+
+    .lista-ankieta-head{
+      height: 40px;
+      line-height: 40px;
+      font-size:1.2em;
+      padding: 0 10px;
+      background: $box-color;
+      color: white;
+      font-weight: 400;
+    }
+    .lista-ankieta-content{
+      &>div{
+        padding: 10px;
+        border-bottom: 1px solid #FAFAFA;
+      }
+    }
+  }
+
+}

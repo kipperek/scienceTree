@@ -1,0 +1,59 @@
+
+$fa-font-path: "/bower_components/font-awesome/fonts";
+
+@import 'font-awesome/scss/font-awesome';
+
+/**
+ * App-wide Styles
+ */
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 730px;
+    }
+}
+
+
+body{
+  font-size: 16px;
+  background: #FAFAFA;
+  font-family: RobotoDraft;
+  font-weight: 300;
+  margin: 0;
+  padding:0;
+}
+
+.top-navbar{
+  height:50px;
+  line-height: 50px;
+  background: #004D40;
+  font-weight: 400;
+  padding: 0 20px;
+
+  &>div{
+    display:inline-block;
+
+   &.nav-left{
+     span.logo-name{
+       font-size: 1.8em;
+       color: white;
+     }
+   }
+  }
+
+
+}
+
+
+// Component styles are injected through grunt
+// injector
+@import 'listaAnkiet/listaAnkiet.scss';
+// endinjector
