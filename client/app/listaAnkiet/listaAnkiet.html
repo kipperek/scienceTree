@@ -6,13 +6,19 @@
     </div>
     <div class="lista-ankieta-content">
       <div>
-        Ilość badanych: {{ankieta.iloscRozwiazan}}
+        Ilość badanych: <span class="lista-content-number">{{ankieta.wyniki}}</span>
       </div>
       <div>
-        Ilość nowych badań: {{ankieta.iloscRozwiazan}}
+        Ilość nowych badań: <span class="lista-content-number">{{ankieta.nowe}}</span>
+      </div>
+      <div class="akcje">
+        <paper-button class="btn-edit">Edytuj</paper-button><paper-button class="btn-cancel">Ukryj</paper-button>
       </div>
     </div>
 
   </div>
 
+
+  <paper-fab icon="add" ng-click="addNewQuestionaire()" class="add-floating-buton"></paper-fab>
 </div>
+

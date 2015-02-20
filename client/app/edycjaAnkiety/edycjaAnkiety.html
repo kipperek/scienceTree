@@ -1,0 +1,12 @@
+<div class="edycja-ankiety-wraper">
+  <div class="ankieta-blok" ng-repeat="blok in bloki">
+    <div class="ankieta-blok-numer"><span>Blok {{$index+1}}</span></div>
+  </div>
+
+  <paper-fab icon="add" class="add-floating-buton" ng-click="dodajBlok()"></paper-fab>
+</div>
+
+  <div class="left-menu">
+    <div ng-include src="'components/left-menu.html'"></div>
+
+  </div>

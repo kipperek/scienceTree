@@ -13,7 +13,8 @@
 
     <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
     <link rel="import" href="bower_components/paper-elements/paper-elements.html">
-    <link rel="import" href="bower_components/font-roboto/roboto.html">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:500,300,400' rel='stylesheet' type='text/css'>
+    <!--<link rel="import" href="bower_components/font-roboto/roboto.html">-->
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
@@ -27,7 +28,7 @@
     <!-- endbuild -->
 
   </head>
-  <body ng-app="sciencetreeApp">
+  <body ng-app="sciencetreeApp" ng-controller="mainController" ng-class="{'menu-active': menuActive}">
 
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -37,15 +38,19 @@
     <!-- Add your site or application content here -->
     <nav class="top-navbar">
       <div class="nav-left">
-        <span class="logo-name">ScienceTree</span>
+        <paper-icon-button icon="menu" ng-click="toggleMenu()"></paper-icon-button> <span class="logo-name">ScienceTree</span>
       </div>
       <div class="nav-left"></div>
     </nav>
 
-    <div ui-view=""></div>
+    <div class="appField" ui-view=""></div>
 
 
-
+<div class="app-mask" ng-hide="spinnerHidden">
+  <div class="app-mask-spinner">
+    <paper-spinner active></paper-spinner>
+  </div>
+</div>
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
@@ -66,6 +71,8 @@
         <!-- build:js({.tmp,client}) app/app.js -->
         <script src="app/app.js"></script>
           <!-- injector:js -->
+          <script src="app/edycjaAnkiety/appEdycjaAnkiety.js"></script>
+          <script src="app/edycjaAnkiety/edycjaAnkiety.controllers.js"></script>
           <script src="app/listaAnkiet/appListaAnkiet.js"></script>
           <script src="app/listaAnkiet/listaAnkiet.controllers.js"></script>
           <!-- endinjector -->

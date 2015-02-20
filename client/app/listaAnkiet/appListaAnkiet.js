@@ -1,6 +1,3 @@
-/**
- * Created by Kacper on 2015-02-19.
- */
 'use strict';
 
 angular.module('sciencetreeApp.listaAnkiet', ['ui.router'])

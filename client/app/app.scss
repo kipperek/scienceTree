@@ -24,8 +24,8 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 
 body{
   font-size: 16px;
-  background: #FAFAFA;
-  font-family: RobotoDraft;
+  background: #EAEAEA;
+  font-family: Roboto;
   font-weight: 300;
   margin: 0;
   padding:0;
@@ -36,13 +36,19 @@ body{
   line-height: 50px;
   background: #004D40;
   font-weight: 400;
-  padding: 0 20px;
+  padding: 0 15px;
 
   &>div{
     display:inline-block;
 
    &.nav-left{
+     paper-icon-button{
+       color: white;
+       vertical-align: top;
+       margin: 5px 0 5px 0;
+     }
      span.logo-name{
+       margin-left: 10px;
        font-size: 1.8em;
        color: white;
      }
@@ -52,8 +58,103 @@ body{
 
 }
 
+.app-mask{
+  position: fixed;
+  top:0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  background: rgba(0,0,0,0.8);
+
+  .app-mask-spinner{
+//    background: white;
+    height: 30px;
+    width: 30px;
+    padding:10px;
+    border-radius: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -25px 0 0 -25px;
+
+    paper-spinner{
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+.appField{
+  position: absolute;
+  overflow: auto;
+  left:0;
+  bottom:0;
+  right:0;
+  top: 50px;
+}
+
+body.menu-active {
+  .left-menu{
+    left:0;
+  }
+}
+
+.left-menu{
+  position: fixed;
+  width: 200px;
+  left: -200px;
+  top: 0;
+  bottom: 0;
+  background: black;
+  color: white;
+  z-index: 2;
+
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+
+
+//STYLE GLOWNE
+
+.btn{
+  font-size: 0.8em;
+  text-transform: none;
+  font-weight: 400;
+}
+
+.btn-edit{
+  @extend  .btn;
+  background: #0091EA;
+  color: white;
+}
+
+.btn-save{
+  @extend  .btn;
+  background: #009688;
+  color: white;
+}
+
+.btn-cancel{
+  @extend  .btn;
+  background: #B71C1C;
+  color: white;
+}
+.add-floating-buton{
+  position:fixed;
+  z-index: 1;
+  left: 20px;
+  bottom:20px;
+  background: #009688;
+}
+
 
 // Component styles are injected through grunt
 // injector
+@import 'edycjaAnkiety/edycjaAnkiety.scss';
 @import 'listaAnkiet/listaAnkiet.scss';
 // endinjector

@@ -2,17 +2,19 @@
 $box-color: #009688;
 
 .lista-wrapper{
-  padding:20px;
+  padding:10px;
 
   .lista-ankieta{
     width: 200px;
+    display: inline-block;
+    margin: 10px;
     background: white;
     border-bottom: 1px solid $box-color;
 
     .lista-ankieta-head{
       height: 40px;
       line-height: 40px;
-      font-size:1.2em;
+      font-size:0.75em;
       padding: 0 10px;
       background: $box-color;
       color: white;
@@ -21,7 +23,26 @@ $box-color: #009688;
     .lista-ankieta-content{
       &>div{
         padding: 10px;
-        border-bottom: 1px solid #FAFAFA;
+        border-bottom: 1px solid #EAEAEA;
+
+        &.akcje {
+          text-align: center;
+        }
+
+        .lista-content-number{
+          font-size: 0.75em;
+          position: relative;
+          top: -1px;
+          float: right;
+          line-height: 25px;
+          text-align: center;
+          display: inline-block;
+          color: white;
+          background: #F44336;
+          height: 25px;
+          width: 25px;
+          border-radius: 25px;
+        }
       }
     }
   }
