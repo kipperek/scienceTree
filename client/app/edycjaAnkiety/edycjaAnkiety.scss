@@ -8,10 +8,14 @@
     padding-left: 100px;
 
     &:hover{
-      background: darken(white,20%);
+      background: darken(white,15%);
     }
     &.active{
-      background: #64B5F6;
+      background: lighten(#64B5F6, 22%);
+
+      &:hover{
+        background: lighten(#64B5F6, 15%);
+      }
     }
 
     &>div{

@@ -13,8 +13,9 @@ angular.module('sciencetreeApp', [
       .otherwise('/');
 
     $locationProvider.html5Mode(true);
-  }).run(['$rootScope', function($rootScope){
-
+  })
+  .controller('mainController',['$scope','$rootScope',function($scope,$rootScope){
+    $scope.menuActive = false;
     $rootScope.spinnerHidden = false;
 
     var hideSpinner = function(){
@@ -26,10 +27,11 @@ angular.module('sciencetreeApp', [
 
     $rootScope.$on('showSpinner', showSpinner);
     $rootScope.$on('hideSpinner', hideSpinner);
-    $rootScope.$on('$stateChangeStart', showSpinner);
-  }])
-  .controller('mainController',['$scope',function($scope){
-    $scope.menuActive = false;
+
+    $rootScope.$on('$stateChangeStart', function(){
+      $scope.menuActive = false;
+      $rootScope.spinnerHidden = false;
+    });
 
     $scope.toggleMenu = function(){
       $scope.menuActive = !$scope.menuActive;
