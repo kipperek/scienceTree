@@ -1,0 +1,21 @@
+.drzewko-cover{
+  position:fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  background: url(/assets/images/login_tree.jpg);
+  background-size: cover;
+  background-position: center;
+
+  &>div{
+    height:200px;
+    width:300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -100px 0 0 -150px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.6);
+  }
+}

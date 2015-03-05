@@ -5,18 +5,20 @@ angular.module('sciencetreeApp', [
   'ngResource',
   'ngSanitize',
   'ui.router',
+  'sciencetreeApp.login',
+  'sciencetreeApp.mainApp',
   'sciencetreeApp.listaAnkiet',
   'sciencetreeApp.edycjaAnkiety'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider
-      .otherwise('/');
+      .otherwise('/tree');
 
     $locationProvider.html5Mode(true);
   })
   .controller('mainController',['$scope','$rootScope',function($scope,$rootScope){
-    $scope.menuActive = false;
     $rootScope.spinnerHidden = false;
+    $rootScope.menuActive = false;
 
     var hideSpinner = function(){
       $rootScope.spinnerHidden = true;
@@ -29,11 +31,6 @@ angular.module('sciencetreeApp', [
     $rootScope.$on('hideSpinner', hideSpinner);
 
     $rootScope.$on('$stateChangeStart', function(){
-      $scope.menuActive = false;
       $rootScope.spinnerHidden = false;
     });
-
-    $scope.toggleMenu = function(){
-      $scope.menuActive = !$scope.menuActive;
-    };
   }]);

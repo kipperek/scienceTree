@@ -21,6 +21,32 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
     }
 }
 
+$light-blue: #03A9F4;
+
+@mixin css-animation($type, $sec, $anim){
+  -webkit-transition: $type $sec $anim;
+  -moz-transition:    $type $sec $anim;
+  -o-transition:      $type $sec $anim;
+  -ms-transition:     $type $sec $anim;
+  transition:         $type $sec $anim;
+}
+
+@mixin css-rotate($deg){
+  -webkit-transform: rotate($deg);
+  -moz-transform: rotate($deg);
+  -o-transform: rotate($deg);
+  transform: rotate($deg);
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 
 body{
   font-size: 16px;
@@ -31,10 +57,43 @@ body{
   padding:0;
 }
 
+body.menu-active {
+  .left-menu{
+    left:0;
+  }
+  div.nav-hamburger{
+    @include css-rotate(360deg);
+    span{
+      &:nth-child(1){
+        @include css-rotate(-45deg);
+        width: 15px !important;
+        top: 9px !important;
+        left: -3px !important;
+      }
+      &:nth-child(2){
+//        left:8px !important;
+      }
+      &:nth-child(3){
+        @include css-rotate(45deg);
+        width:15px !important;
+        top: 15px !important;
+        left: -3px !important;
+      }
+    }
+  }
+  .menu-mask{
+    visibility: visible;
+    opacity: 0.5;
+  }
+}
+
 .top-navbar{
+  box-shadow: 0 0 5px 2px rgba(0,0,0,0.5);
+  position: relative;
+  z-index: 10;
   height:50px;
   line-height: 50px;
-  background: #004D40;
+  background: white;//#004D40;
   font-weight: 400;
   padding: 0 15px;
 
@@ -42,6 +101,39 @@ body{
     display:inline-block;
 
    &.nav-left{
+     div.nav-hamburger{
+       width: 25px;
+       height:30px;
+       margin: 10px;
+       display: inline-block;
+       vertical-align: top;
+       cursor: pointer;
+       @extend .noselect;
+       @include css-animation(all, 0.4s, ease-in-out);
+
+       span{
+         display:block;
+         background: black;
+         height: 2px;
+         position: relative;
+         $offset-top: 6px;
+         border-radius: 3px;
+         left:0;
+         width: 25px;
+         @include css-animation(all, 0.4s, ease-in-out);
+
+         &:nth-child(1){
+           top:$offset-top;
+         }
+         &:nth-child(2){
+           top: $offset-top + 6px;
+         }
+         &:nth-child(3){
+           top: $offset-top + 12px;
+         }
+       }
+
+     }
      paper-icon-button{
        color: white;
        vertical-align: top;
@@ -50,16 +142,29 @@ body{
      span.logo-name{
        margin-left: 10px;
        font-size: 1.8em;
-       color: white;
+       color: black;
      }
    }
   }
 
 
 }
+.menu-mask{
+  position: fixed;
+  top:0;
+  left: 0;
+  bottom:0;
+  right: 0;
+  z-index: 1;
+  background: black;
+  visibility: hidden;
+  opacity: 0;
+  @include css-animation(all, 0.4s, ease-in-out);
+}
 
 .app-mask{
   position: fixed;
+  z-index: 9999;
   top:0;
   left: 0;
   bottom: 0;
@@ -94,45 +199,54 @@ body{
   top: 50px;
 }
 
-body.menu-active {
-  .left-menu{
-    left:0;
-  }
-}
-
 .left-menu{
   position: fixed;
-  width: 150px;
-  left: -170px;
-  top: 0;
+  width: 240px;
+  left: -240px;
+  top: 50px;
   bottom: 0;
-  background: black;
-  color: white;
+  background: white;
+  color: black;
   z-index: 2;
-  box-shadow: 0 0 5px 2px rgba(0,0,0,0.8);
+//  box-shadow: 0 0 5px 2px rgba(0,0,0,0.8);
 
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-
-
-  .left-menu-close{
-    text-align: center;
-    margin: 5px 0 5px 0;
-    padding: 5px 10px 5px 10px;
+  @include css-animation(all, 0.4s, ease-in-out);
+  .menu-zalogowany{
+    height: 50px;
+    background: $light-blue;
+    color: white;
     font-weight: 400;
-    cursor: pointer;
-
-    core-icon{
-      vertical-align: top;
-      width: 22px;
-      height: 22px;
+    font-size: 13px;
+    line-height: 50px;
+    text-align: center;
+    img{
+      margin: 0 10px 0 0px;
+      border-radius: 100%;
+      vertical-align: middle;
     }
+  }
+  .standard-menu{
+    ul{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li{
+        border-bottom: 1px solid darken(white,10%);
+        padding: 5px;
+        height: 30px;
+        line-height: 30px;
+        cursor: pointer;
+        &:hover{
+          background: darken(white,5%);
+        }
 
-    &:hover{
-      background: lighten(black, 30%);
+        core-icon{
+          color: darken(white,50%);
+          vertical-align: top;
+          top:3px;
+          margin-right:5px;
+        }
+      }
     }
   }
 }
@@ -177,4 +291,5 @@ body.menu-active {
 // injector
 @import 'edycjaAnkiety/edycjaAnkiety.scss';
 @import 'listaAnkiet/listaAnkiet.scss';
+@import 'login/login.scss';
 // endinjector

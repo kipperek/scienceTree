@@ -1,0 +1,18 @@
+<nav class="top-navbar">
+  <div class="nav-left">
+    <!--<paper-icon-button icon="menu" ng-click="toggleMenu()"></paper-icon-button>-->
+    <div class="nav-hamburger" ng-click="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <span class="logo-name">ScienceTree</span>
+  </div>
+</nav>
+
+<div class="appField" ui-view=""></div>
+
+<div class="left-menu">
+  <div ng-include src="'components/left-menu.html'"></div>
+</div>
+<div class="menu-mask" ng-click="toggleMenu()"></div>

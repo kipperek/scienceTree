@@ -6,11 +6,13 @@ angular.module('sciencetreeApp.edycjaAnkiety', ['ui.router'])
     $stateProvider
       .state('nowaAnkieta', {
         url: '/ankieta',
+        parent: 'app',
         templateUrl: 'app/edycjaAnkiety/edycjaAnkiety.html',
         controller: 'EdycjaAnkietyController'
       })
       .state('edycjaAnkiety', {
         url: '/ankieta/:id',
+        parent: 'app',
         templateUrl: 'app/edycjaAnkiety/edycjaAnkiety.html',
         controller: 'EdycjaAnkietyController'
       });

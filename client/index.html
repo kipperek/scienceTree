@@ -36,21 +36,13 @@
 
 
     <!-- Add your site or application content here -->
-    <nav class="top-navbar">
-      <div class="nav-left">
-        <paper-icon-button icon="menu" ng-click="toggleMenu()"></paper-icon-button> <span class="logo-name">ScienceTree</span>
+    <div ui-view></div>
+
+    <div class="app-mask" ng-hide="spinnerHidden">
+      <div class="app-mask-spinner">
+        <paper-spinner active></paper-spinner>
       </div>
-      <div class="nav-left"></div>
-    </nav>
-
-    <div class="appField" ui-view=""></div>
-
-
-<div class="app-mask" ng-hide="spinnerHidden">
-  <div class="app-mask-spinner">
-    <paper-spinner active></paper-spinner>
-  </div>
-</div>
+    </div>
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
@@ -71,10 +63,14 @@
         <!-- build:js({.tmp,client}) app/app.js -->
         <script src="app/app.js"></script>
           <!-- injector:js -->
+          <script src="app/appMain/appAppMain.js"></script>
+          <script src="app/appMain/appMain.controllers.js"></script>
           <script src="app/edycjaAnkiety/appEdycjaAnkiety.js"></script>
           <script src="app/edycjaAnkiety/edycjaAnkiety.controllers.js"></script>
           <script src="app/listaAnkiet/appListaAnkiet.js"></script>
           <script src="app/listaAnkiet/listaAnkiet.controllers.js"></script>
+          <script src="app/login/appLogin.js"></script>
+          <script src="app/login/login.controllers.js"></script>
           <!-- endinjector -->
         <!-- endbuild -->
 </body>
