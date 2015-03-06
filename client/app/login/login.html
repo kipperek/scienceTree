@@ -1,7 +1,15 @@
 <div class="drzewko-cover">
   <div>
-    <paper-input label="Login" floatinglabel="Login"></paper-input>
-    <paper-input label="Hasło" floatinglabel="Hasło" type="password"></paper-input>
-    <paper-button>Zaloguj się</paper-button>
+    <div>
+      <paper-input-decorator label="Login" floatinglabel="Login">
+        <input type="text" />
+      </paper-input-decorator>
+      <paper-input-decorator label="Hasło" floatinglabel="Hasło">
+        <input type="password" />
+      </paper-input-decorator>
+    </div>
+    <paper-button class="btn-save">Zaloguj się</paper-button>
+    <a href="">Zapomniałem hasła</a> |
+    <a href="">Rejerstracja</a>
   </div>
 </div>

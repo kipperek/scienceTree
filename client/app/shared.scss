@@ -1,0 +1,26 @@
+
+$light-blue: #03A9F4;
+
+@mixin css-animation($type, $sec, $anim){
+  -webkit-transition: $type $sec $anim;
+  -moz-transition:    $type $sec $anim;
+  -o-transition:      $type $sec $anim;
+  -ms-transition:     $type $sec $anim;
+  transition:         $type $sec $anim;
+}
+
+@mixin css-rotate($deg){
+  -webkit-transform: rotate($deg);
+  -moz-transform: rotate($deg);
+  -o-transform: rotate($deg);
+  transform: rotate($deg);
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

@@ -1,3 +1,5 @@
+@import 'shared';
+
 .drzewko-cover{
   position:fixed;
   top:0;
@@ -9,13 +11,53 @@
   background-position: center;
 
   &>div{
-    height:200px;
-    width:300px;
+    $loginBoxWidth: 300px;
+    $loginBoxHeight: 183px;
+
+    box-sizing: border-box;
+    padding: 10px 15px;
+    height:$loginBoxHeight;
+    width:$loginBoxWidth;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin: -100px 0 0 -150px;
+    margin-top: -($loginBoxHeight/2);
+    margin-left: -$loginBoxWidth/2;
     border-radius: 10px;
-    background: rgba(255,255,255,0.6);
+    background: rgba(255,255,255,0.85);
+
+    paper-input-decorator{
+      padding-top: 0;
+    }
+
+    $placeholder-color: #525252;
+    paper-input-decorator /deep/ ::-webkit-input-placeholder {
+       color: $placeholder-color;
+     }
+    paper-input-decorator /deep/ ::-moz-placeholder {
+      color: $placeholder-color;
+    }
+    paper-input-decorator /deep/ :-ms-input-placeholder {
+      color: $placeholder-color;
+    }
+    paper-input-decorator /deep/ .focused-underline {
+      background-color: $light-blue;
+    }
+    paper-input-decorator[focused] /deep/ .floated-label .label-text{
+      color: $light-blue;
+    }
+
+    paper-button{
+      margin-left: 0px;
+    }
+
+    a, a:link, a:visited{
+      color: darken($light-blue,5%);
+      font-size: 12px;
+      text-decoration: none;
+    }
+    a:hover{
+      text-decoration: underline;
+    }
   }
 }
