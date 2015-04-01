@@ -13,6 +13,7 @@
 
     <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
     <link rel="import" href="bower_components/paper-elements/paper-elements.html">
+    <link rel="import" href="/bower_components/core-icons/social-icons.html">
     <link href='http://fonts.googleapis.com/css?family=Roboto:500,300,400' rel='stylesheet' type='text/css'>
     <!--<link rel="import" href="bower_components/font-roboto/roboto.html">-->
 
@@ -43,6 +44,9 @@
         <paper-spinner active></paper-spinner>
       </div>
     </div>
+    <div class="ciasteczkowy-potwor" ng-class="{'cookies-bar-active': cookiesFactory.shown}">
+      <img src="/assets/images/coockie.png" alt/><span>Wykorzystujemy pliki cookies do poprawnego działania aplikacji, używając jej akceptujesz polityke cookies.</span><span class="span-btn" ng-click="hideCookies()">OK, rozumiem</span>
+    </div>
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
@@ -63,14 +67,21 @@
         <!-- build:js({.tmp,client}) app/app.js -->
         <script src="app/app.js"></script>
           <!-- injector:js -->
+          <script src="app/addons/datepicker/datepicker.js"></script>
           <script src="app/appMain/appAppMain.js"></script>
           <script src="app/appMain/appMain.controllers.js"></script>
+          <script src="app/controllers.app.js"></script>
           <script src="app/edycjaAnkiety/appEdycjaAnkiety.js"></script>
           <script src="app/edycjaAnkiety/edycjaAnkiety.controllers.js"></script>
+          <script src="app/edycjaDanychAnkiety/appEdycjaDanychAnkiety.js"></script>
+          <script src="app/edycjaDanychAnkiety/edycjaDanychAnkiety.controllers.js"></script>
           <script src="app/listaAnkiet/appListaAnkiet.js"></script>
           <script src="app/listaAnkiet/listaAnkiet.controllers.js"></script>
           <script src="app/login/appLogin.js"></script>
           <script src="app/login/login.controllers.js"></script>
+          <script src="app/login/login.directives.js"></script>
+          <script src="app/login/login.services.js"></script>
+          <script src="app/services.app.js"></script>
           <!-- endinjector -->
         <!-- endbuild -->
 </body>

@@ -1,0 +1,75 @@
+@import 'shared';
+
+.edycja-danych-wraper{
+  text-align: center;
+  padding: 20px;
+
+  .edycj-danych-inline-divs{
+    margin: 20px;
+    vertical-align: middle;
+    display: inline-block;
+    text-align: left;
+  }
+
+  &>div{
+    @extend .edycj-danych-inline-divs;
+    width:500px;
+
+      &>span{
+        vertical-align: top;
+        display: inline-block;
+        width: 300px;
+        box-sizing: border-box;
+        padding-left: 20px;
+        padding-top: 55px;
+        text-align: justify;
+        float:right;
+        font-weight: 400;
+      }
+
+      h2{
+        font-weight: 400;
+        font-size: 30px;
+        border-bottom: 1px solid rgb(117, 117, 117);
+      }
+
+      .edycja-danych-info-image{
+        display:inline-block;
+        vertical-align: top;
+        text-align: center;
+        width:200px;
+        height:200px;
+        background-image: url(/assets/images/thump_info.png);
+        background-size: 200px 200px;
+        border-radius: 100%;
+        line-height: 200px;
+
+        core-icon{
+          vertical-align: middle;
+          color: rgba(255,255,255,0.8);
+          width:100px;
+          height:100px;
+          margin-left: 1px;
+        }
+    }
+
+  }
+
+  &>form{
+    @extend .edycj-danych-inline-divs;
+    width: 300px;
+
+    paper-input-decorator{
+      margin: 0 0 5px 0;
+      padding:0;
+    }
+
+  }
+
+  paper-button{
+    margin-top: 10px;
+    &:first-child{
+      margin-left:0;
+    }
+  }
+}

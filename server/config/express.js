@@ -14,6 +14,9 @@ var cookieParser = require('cookie-parser');
 var errorHandler = require('errorhandler');
 var path = require('path');
 var config = require('./environment');
+var session = require('express-session');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 module.exports = function(app) {
   var env = app.get('env');
@@ -26,7 +29,15 @@ module.exports = function(app) {
   app.use(bodyParser.json());
   app.use(methodOverride());
   app.use(cookieParser());
-  
+  app.use(session({
+    genid: function(req) {
+      return genuuid() // use UUIDs for session IDs
+    },
+    secret: 'kotele keybordele'
+  }));
+  app.use(passport.initialize());
+  app.use(passport.session());
+
   if ('production' === env) {
     app.use(favicon(path.join(config.root, 'public', 'favicon.ico')));
     app.use(express.static(path.join(config.root, 'public')));
@@ -42,4 +53,10 @@ module.exports = function(app) {
     app.use(morgan('dev'));
     app.use(errorHandler()); // Error handler - has to be last
   }
+
+  var Account = require('../api/user/user.model');
+  passport.use(new LocalStrategy(Account.authenticate()));
+  passport.serializeUser(Account.serializeUser());
+  passport.deserializeUser(Account.deserializeUser());
+
 };

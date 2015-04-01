@@ -9,11 +9,69 @@
   background: url(/assets/images/login_tree.jpg);
   background-size: cover;
   background-position: center;
+  $loginBoxWidth: 300px;
+  $loginBoxHeight: 147px;
 
-  &>div{
-    $loginBoxWidth: 300px;
-    $loginBoxHeight: 183px;
+  .login-error-msg{
+    position: fixed;
+//    width: $loginBoxWidth;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    border: 1px solid rgba(225, 30, 30, 0.90);
+    border-radius: 10px;
+    background: rgba(247, 33, 33, 0.9);
+    color: white;
+    top:50%;
+    right: calc(50% - 30px);
+    margin-right: $loginBoxWidth/2+15px;
+    visibility: hidden;
+    opacity: 0;
+    @include css-animation(all, 0.3s, ease-in-out);
 
+    &.login-error-msg-shown{
+      right: 50%;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &.login-required-msg{
+      margin-top: -20px;
+    }
+
+    &.login-credentials-msg{
+      margin-top: -60px;
+    }
+
+
+    span.triangle{
+      display:block;
+      position:absolute;
+      right:-11px;
+      top:50%;
+      margin-top:-8px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 8px 0 8px 10px;
+      border-color: transparent transparent transparent rgba(225, 30, 30, 0.9);
+    }
+
+    span.triangle:after{
+      content:"";
+      display:block;
+      position:absolute;
+      right:1px;
+      top:50%;
+      margin-top:-8px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 8px 0 8px 10px;
+      border-color: transparent transparent transparent rgba(247, 33, 33, 0.8);
+    }
+  }
+
+  &>paper-shadow{
     box-sizing: border-box;
     padding: 10px 15px;
     height:$loginBoxHeight;
@@ -24,13 +82,27 @@
     margin-top: -($loginBoxHeight/2);
     margin-left: -$loginBoxWidth/2;
     border-radius: 10px;
-    background: rgba(255,255,255,0.85);
+    background: rgba(255,255,255,0.9);
+
+    .login-input-wraper{
+      margin-bottom:13px;
+
+      &>core-icon{
+        position:relative;
+        top:2px;
+        color: rgb(81, 81, 81);
+      }
+    }
 
     paper-input-decorator{
       padding-top: 0;
+      padding-bottom: 0;
+      vertical-align: middle;
+      display: inline-block !important;
+      width: 237px;
     }
 
-    $placeholder-color: #525252;
+    $placeholder-color: #a3a3a3;
     paper-input-decorator /deep/ ::-webkit-input-placeholder {
        color: $placeholder-color;
      }
@@ -47,17 +119,41 @@
       color: $light-blue;
     }
 
+    paper-input-decorator.error /deep/ .unfocused-underline, paper-input-decorator.error /deep/ .focused-underline {
+      background-color: #ea1f1f;
+    }
+
     paper-button{
+      vertical-align: middle;
       margin-left: 0px;
+      width: 80px;
+      paper-spinner{
+        height: 16px;
+        width: 16px;
+
+        &::shadow .circle {
+          border-color: #ff493f;
+        }
+      }
     }
 
     a, a:link, a:visited{
       color: darken($light-blue,5%);
       font-size: 12px;
       text-decoration: none;
+      opacity: 1;
+      visibility: visible;
     }
     a:hover{
       text-decoration: underline;
     }
+    span{
+      @include css-animation(all, 0.2s, ease-in-out);
+      &.login-links-hidden{
+        visibility: hidden;
+        opacity: 0;
+      }
+    }
   }
+
 }

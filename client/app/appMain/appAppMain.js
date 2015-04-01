@@ -7,6 +7,11 @@ angular.module('sciencetreeApp.mainApp', ['ui.router'])
         abstract: true,
         url: '/tree',
         templateUrl: 'app/appMain/appMain.html',
-        controller: 'AppMainController'
+        controller: 'AppMainController',
+        resolve:{
+          user:['loginFactory','$q',function(loginFactory,$q){
+            return loginFactory.user || $q.reject({unAuthorized:true});
+          }]
+        }
       });
   }]);

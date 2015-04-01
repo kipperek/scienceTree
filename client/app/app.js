@@ -8,29 +8,25 @@ angular.module('sciencetreeApp', [
   'sciencetreeApp.login',
   'sciencetreeApp.mainApp',
   'sciencetreeApp.listaAnkiet',
-  'sciencetreeApp.edycjaAnkiety'
+  'sciencetreeApp.edycjaAnkiety',
+  'sciencetreeApp.edycjaDanychAnkiety',
+  'materialDatepicker'
 ])
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
-    $urlRouterProvider
-      .otherwise('/tree');
 
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+    $urlRouterProvider.otherwise( function($injector) {
+      var $state = $injector.get("$state");
+      $state.go("login");
+    });
     $locationProvider.html5Mode(true);
   })
-  .controller('mainController',['$scope','$rootScope',function($scope,$rootScope){
-    $rootScope.spinnerHidden = false;
-    $rootScope.menuActive = false;
 
-    var hideSpinner = function(){
-      $rootScope.spinnerHidden = true;
-    }
-    var showSpinner = function(){
-      $rootScope.spinnerHidden = false;
-    }
+  .run(['$rootScope','$state','loginFactory',function($rootScope,$state,loginFactory){
+    $rootScope.$on('$stateChangeStart',function(event, toState){
+      if(loginFactory.byPass){ return; }
 
-    $rootScope.$on('showSpinner', showSpinner);
-    $rootScope.$on('hideSpinner', hideSpinner);
+      event.preventDefault();
+      loginFactory.isAuthenticated(toState.name);
 
-    $rootScope.$on('$stateChangeStart', function(){
-      $rootScope.spinnerHidden = false;
     });
   }]);

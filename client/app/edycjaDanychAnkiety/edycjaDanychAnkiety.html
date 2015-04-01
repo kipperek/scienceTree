@@ -1,0 +1,43 @@
+<div class="edycja-danych-wraper">
+  <div>
+    <div><h2>Nowa ankieta</h2></div>
+    <div class="edycja-danych-info-image">
+      <core-icon icon="info-outline"></core-icon>
+    </div>
+    <span>Podaj nam niezbędne dane, aby system mógł myśleć za Ciebie i potencjalni badani mogli z łatwością wyszukać tę ankietę.</span>
+  </div>
+
+  <form>
+    <div>
+      <paper-input-decorator label="Nazwa" floatinglabel>
+        <input type="text" ng-model="ankieta.nazwa" />
+      </paper-input-decorator>
+    </div>
+    <div>
+      <paper-input-decorator label="Grupa docelowa" floatinglabel>
+        <input type="text" ng-model="ankieta.nazwa" />
+      </paper-input-decorator>
+    </div>
+    <div>
+      <material-dateinput data-model="ankieta.dataZakonczenia" data-label="Data zakończenia"/>
+    </div>
+    <div>
+      <paper-input-decorator label="Tagi" floatinglabel>
+        <input type="text" ng-model="ankieta.nazwa" />
+      </paper-input-decorator>
+    </div>
+    <div>
+      <paper-input-decorator label="Liczba docelowa" floatinglabel>
+        <input type="text" ng-model="ankieta.nazwa" />
+      </paper-input-decorator>
+    </div>
+    <div>
+      <paper-input-decorator label="Opis" floatinglabel>
+        <textarea></textarea>
+      </paper-input-decorator>
+    </div>
+    <div>
+      <paper-button class="btn-save">Stwórz ankietę!</paper-button> <paper-button class="btn-cancel">Anuluj</paper-button>
+    </div>
+  </form>
+</div>

@@ -9,7 +9,7 @@ angular.module('sciencetreeApp.listaAnkiet')
     ];
 
     $scope.addNewQuestionaire = function(){
-      $state.go('nowaAnkieta');
+      $state.go('nowaAnkietaDane');
     };
 
 

@@ -1,5 +1,9 @@
-<div class="lista-wrapper">
+<div class="lista-menu-filtry">
+  <paper-button class="btn-edit" ng-click="addNewQuestionaire()" >Nowa ankieta</paper-button>
+  <paper-button class="btn-edit" ng-click="addNewQuestionaire()" >Filtruj listę</paper-button>
 
+</div>
+<div class="lista-wrapper">
   <div class="lista-ankieta" ng-repeat="ankieta in ankiety">
     <div class="lista-ankieta-head">
       {{ankieta.name}}
@@ -17,7 +21,4 @@
     </div>
 
   </div>
-
-
-  <paper-fab icon="add" ng-click="addNewQuestionaire()" class="add-floating-buton"></paper-fab>
 </div>

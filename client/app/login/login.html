@@ -1,15 +1,35 @@
 <div class="drzewko-cover">
-  <div>
-    <div>
-      <paper-input-decorator label="Login" floatinglabel="Login">
-        <input type="text" />
-      </paper-input-decorator>
-      <paper-input-decorator label="Hasło" floatinglabel="Hasło">
-        <input type="password" />
-      </paper-input-decorator>
-    </div>
-    <paper-button class="btn-save">Zaloguj się</paper-button>
-    <a href="">Zapomniałem hasła</a> |
-    <a href="">Rejerstracja</a>
+  <div class="login-error-msg login-required-msg" ng-class="{ 'login-error-msg-shown': user.$invalid && ((user.pass.$dirty && user.pass.$error.required) || (user.login.$dirty && user.login.$error.required))}">
+    <span>Oba pola są wymagane</span>
+    </span><span class="triangle"></span>
   </div>
+  <div class="login-error-msg login-credentials-msg" ng-class="{ 'login-error-msg-shown': user.$invalid && user.$error.credentials}">
+    <span>Błędne dane logowania</span>
+    </span><span class="triangle"></span>
+  </div>
+
+  <paper-shadow z="4">
+    <form ng-submit="logIn()" name="user" novalidate>
+      <div>
+        <div class="login-input-wraper">
+          <core-icon icon="social:person"></core-icon>
+          <paper-input-decorator label="Login" ng-class="{ error: !user.login.$valid && user.login.$dirty}">
+            <input name="login" type="text" ng-model="login" required ng-attr-disabled="{!loginFactory.loggingIn && 'true' : 'false'}" disable-input/>
+          </paper-input-decorator>
+        </div>
+        <div class="login-input-wraper">
+          <core-icon icon="lock"></core-icon>
+          <paper-input-decorator label="Hasło" ng-class="{ error: !user.pass.$valid && user.pass.$dirty}" >
+            <input name="pass" type="password" ng-model="pass" required disable-input/>
+          </paper-input-decorator>
+        </div>
+      </div>
+      <input type="submit" style="display:none"/>
+      <paper-button class="btn-save" ng-click="logIn()"><paper-spinner active="true" ng-show="loginFactory.loggingIn"></paper-spinner><span ng-hide="loginFactory.loggingIn">Zaloguj się</span></paper-button>
+      <span ng-class="{'login-links-hidden': loginFactory.loggingIn}">
+        <a href="">Zapomniałem hasła</a> |
+        <a href="" ng-click="register()">Rejerstracja</a>
+      </span>
+    </form>
+  </paper-shadow>
 </div>
