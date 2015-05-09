@@ -1,6 +1,35 @@
-<paper-input-decorator label="Data zakończenia" floatinglabel>
-  <input type="text" />
-</paper-input-decorator>
-<div class="datepicker-main">
-  ELO
+<div class="datepicker-wrapper">
+  <paper-input-decorator label="Data zakończenia" floatinglabel ng-click="showDatepicker($event);">
+    <input type="text" readonly="true"/>
+  </paper-input-decorator>
+  <div class="datepicker-main">
+    <div class="datepicker-info">
+      <div class="datepicker-info-day">{{weekFullDays[datepickerDate.getDay()]}}</div>
+      <div class="datepicker-info-month">{{months[datepickerDate.getMonth()] | short}}</div>
+      <div class="datepicker-info-day-number">{{datepickerDate.getDate()}}</div>
+      <div class="datepicker-info-year">{{datepickerDate.getFullYear()}}</div>
+    </div>
+    <div class="datepicker-date">
+      <div class="datepicker-date-month-year"><span ng-click="updateMonth(-1)" class="datepicker-date-change-month-button">&lt;</span> <span class="datepicker-date-month-and-year-span">{{months[datepickerDate.getMonth()]}} {{datepickerDate.getFullYear()}}</span> <span ng-click="updateMonth(1)" class="datepicker-date-change-month-button">&gt;</span></div>
+      <div class="datepicker-date-days">
+        <table>
+          <thead>
+            <tr>
+              <th ng-repeat="weekDay in weekDays">{{weekDay}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="week in getNumber(weeksInMonth) track by $index">
+              <td ng-repeat="day in getNumber(7) track by $index">{{ getMonthDay($parent.$index, $index, monthsDays[datepickerDate.getMonth()]) }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="datepicker-actions">
+      <paper-button ng-click="hideDatepicker()">ANULUJ</paper-button>
+      <paper-button>WYBIERZ</paper-button>
+    </div>
+  </div>
 </div>
+<div class="datepicker-mask" ng-click="hideDatepicker()"></div>

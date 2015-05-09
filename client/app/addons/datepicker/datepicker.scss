@@ -1,8 +1,134 @@
 @import "shared";
 
-.datepicker-main{
-  width:200px;
-  background: white;
-  box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
-  position: absolute;
+$datepicker-light-green: #009688;
+$datepicker-dark-green: #00796b;
+
+.datepicker-wrapper{
+
+  input{
+    cursor: text;
+  }
+
+  .datepicker-main{
+    font-family: Roboto;
+    width:500px;
+    height:300px;
+    z-index: 12;
+    background: #fafafa;
+    box-shadow: 0 0 30px 0 rgba(0,0,0,0.5);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -250px;
+    display: none;
+    font-size: 0;
+
+    .datepicker-inline-blocks{
+      width:250px;
+      height:250px;
+      display: inline-block;
+      font-size: 14px;
+      vertical-align: top;
+      color:white;
+    }
+
+    .datepicker-info{
+      @extend .datepicker-inline-blocks;
+      background: $datepicker-light-green;
+      text-align: center;
+      font-weight: 400;
+
+      .datepicker-info-day{
+        background: $datepicker-dark-green;
+        height: 30px;
+        line-height: 30px;
+        font-size: 16px;
+        font-weight: 300;
+      }
+      .datepicker-info-month{
+        height:70px;
+        line-height: 70px;
+        font-size: 22px;
+      }
+      .datepicker-info-day-number{
+        height:80px;
+        line-height:80px;
+        font-size: 80px;
+      }
+
+      .datepicker-info-year{
+        height:70px;
+        line-height: 70px;
+        color: #8acfc8;
+        font-size: 22px;
+      }
+
+    }
+    .datepicker-date{
+      @extend .datepicker-inline-blocks;
+      color: black;
+
+      .datepicker-date-month-year{
+        text-align: center;
+        font-weight: 500;
+        height: 30px;
+        line-height: 30px;
+
+        .datepicker-date-month-and-year-span{
+          width: 140px;
+          display:inline-block;
+        }
+
+        .datepicker-date-change-month-button{
+          color: $datepicker-light-green;
+          cursor: pointer;
+          font-size: 18px;
+          font-weight: 800;
+        }
+      }
+      .datepicker-date-days{
+        height:220px;
+        text-align: center;
+
+        table{
+          width: 100%;
+
+          td,th{
+            width: 14.28%;
+            text-align: center;
+            padding: 5px 0;
+          }
+          th{
+            font-weight: 500;
+            color: #606060;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+    .datepicker-actions{
+      height:50px;
+      text-align: right;
+
+      paper-button{
+        color: $datepicker-light-green;
+        font-weight: 400;
+        margin-top: 6px;
+        margin-right: 5px;
+        font-size: 14px;
+      }
+    }
+  }
 }
+.datepicker-mask{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  background: rgba(0,0,0,0.6);
+  z-index:11;
+}
+
+
